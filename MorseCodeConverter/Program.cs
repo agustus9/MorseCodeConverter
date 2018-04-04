@@ -9,9 +9,43 @@ namespace MorseCodeConverter
 {
     class Program
     {
+        static void getUserInput(Dictionary<char, string> translator)
+        {
+            string input;
+            Console.WriteLine("Please use an phrase!");
+            input = Console.ReadLine();
+            input = input.ToUpper();
+            Console.WriteLine("Your output is: " + translate(translator, input));
+            Console.WriteLine("Press enter to end.");
+            Console.ReadLine();
+
+            Console.ReadLine();
+        }
+
+        static string translate(Dictionary<char, string> morseCode, string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char character in input)
+            {
+                if (morseCode.ContainsKey(character))
+                {
+                    sb.Append(morseCode[character] + " ");
+                }
+                else if (character == ' ')
+                {
+                    sb.Append("/ ");
+                }
+                else
+                {
+                    sb.Append(character + " ");
+                }
+            }
+            return sb.ToString();
+        }
+
         static void Main(string[] args)
         {
-            var morseCode = new Dictionary<String, String>();
+            var morseCode = new Dictionary<char, String>();
             const string MORSE_CODE_PATH = "../../morse.csv";
             using (var reader = new StreamReader(MORSE_CODE_PATH))
             {
@@ -24,12 +58,17 @@ namespace MorseCodeConverter
                     var value = splitLine[1];
                     Console.WriteLine(splitLine);
                     Console.WriteLine($"The key/value pair is {key}/{value}");
-                    morseCode.Add(key, value);
+                    morseCode.Add(Convert.ToChar(key), value);
+                    foreach (var phrase in morseCode)
+                    {
+                        Console.WriteLine($"key: {phrase.Key} value : {phrase.Value}");
+                    }
+                    Console.WriteLine(morseCode.Count);
                 }
-                Console.WriteLine(morseCode.Count);
-            }
 
-            Console.ReadLine();
+                getUserInput(morseCode);
+            }
         }
     }
 }
+
