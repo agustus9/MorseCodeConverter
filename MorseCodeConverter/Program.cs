@@ -16,6 +16,9 @@ namespace MorseCodeConverter
             input = Console.ReadLine();
             input = input.ToUpper();
             Console.WriteLine("Your output is: " + translate(translator, input));
+            Console.WriteLine("Do you want to (add) your morseCode");
+            var command = Console.ReadLine();
+            if (command == "add") ;
             Console.WriteLine("Press enter to end.");
             Console.ReadLine();
 
@@ -24,23 +27,23 @@ namespace MorseCodeConverter
 
         static string translate(Dictionary<char, string> morseCode, string input)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
             foreach (char character in input)
             {
                 if (morseCode.ContainsKey(character))
                 {
-                    sb.Append(morseCode[character] + " ");
+                    stringBuilder.Append(morseCode[character] + " ");
                 }
                 else if (character == ' ')
                 {
-                    sb.Append("/ ");
+                    stringBuilder.Append("/ ");
                 }
                 else
                 {
-                    sb.Append(character + " ");
+                    stringBuilder.Append(character + " ");
                 }
             }
-            return sb.ToString();
+            return stringBuilder.ToString();
         }
 
         static void Main(string[] args)
@@ -64,9 +67,13 @@ namespace MorseCodeConverter
                         Console.WriteLine($"key: {phrase.Key} value : {phrase.Value}");
                     }
                     Console.WriteLine(morseCode.Count);
+                    
+                 }
                 }
+                
+                {
 
-                getUserInput(morseCode);
+                    getUserInput(morseCode);
             }
         }
     }
