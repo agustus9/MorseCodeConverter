@@ -28,6 +28,7 @@ namespace MorseCodeConverter
                 }
                 Console.WriteLine(morseCode.Count);
             }
+
             Console.ReadLine();
         }
     }
