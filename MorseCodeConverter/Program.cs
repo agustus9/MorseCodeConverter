@@ -16,16 +16,24 @@ namespace MorseCodeConverter
             input = Console.ReadLine();
             input = input.ToUpper();
             Console.WriteLine("Your output is: " + translate(translator, input));
-            Console.WriteLine("Do you want to (add) your morseCode");
+            Console.WriteLine("Do you want to convert another word? (yes) or (no)");
             var command = Console.ReadLine();
-            if (command == "add") ;
+            if (command == "yes") ;
+
             Console.WriteLine("Press enter to end.");
             Console.ReadLine();
 
-            Console.ReadLine();
-        }
+            var nextCode = true;
+            while (nextCode)
 
-        static string translate(Dictionary<char, string> morseCode, string input)
+            else nextCode = false;
+
+            Console.ReadLine();
+
+        
+        }
+       
+          static string translate(Dictionary<char, string> morseCode, string input)
         {
             StringBuilder stringBuilder = new StringBuilder();
             foreach (char character in input)
@@ -67,13 +75,16 @@ namespace MorseCodeConverter
                         Console.WriteLine($"key: {phrase.Key} value : {phrase.Value}");
                     }
                     Console.WriteLine(morseCode.Count);
-                    
-                 }
-                }
-                
-                {
 
-                    getUserInput(morseCode);
+                }
+
+            }
+
+            {
+
+
+                getUserInput(morseCode);
+            
             }
         }
     }
