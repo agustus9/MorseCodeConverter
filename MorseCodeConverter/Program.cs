@@ -11,25 +11,22 @@ namespace MorseCodeConverter
     {
         static void getUserInput(Dictionary<char, string> translator)
         {
-            string input;
-            Console.WriteLine("Please use an phrase!");
-            input = Console.ReadLine();
-            input = input.ToUpper();
-            Console.WriteLine("Your output is: " + translate(translator, input));
-            Console.WriteLine("Do you want to convert another word? (yes) or (no)");
-            var command = Console.ReadLine();
-            if (command == "yes") ;
-
-            Console.WriteLine("Press enter to end.");
-            Console.ReadLine();
-
             var nextCode = true;
-            while (nextCode)
-
-            else nextCode = false;
-
-            Console.ReadLine();
-
+            while (nextCode){
+                string input;
+                Console.WriteLine("Please use an phrase!");
+                input = Console.ReadLine();
+                input = input.ToUpper();
+                Console.WriteLine("Your output is: " + translate(translator, input));
+                Console.WriteLine("Do you want to convert another word? (yes) or (no)");
+                var command = Console.ReadLine();
+                if (command == "no"){
+                    nextCode = false;
+                } ;
+                
+              }
+                Console.WriteLine("Press enter to end.");
+                Console.ReadLine();
         
         }
        
